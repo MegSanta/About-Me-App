@@ -8,12 +8,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import android.view.View
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var profileImage: ImageView
     private lateinit var profileName: TextView
     private lateinit var profileBio: TextView
+    private lateinit var dogImageView: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,12 +25,22 @@ class MainActivity : AppCompatActivity() {
 
         configureViews()
         setupProfile()
+
     }
+
+    fun onButtonClick(view: View) {
+        //Button click makes dog image visible
+        dogImageView.setImageResource(R.drawable.dog)
+        dogImageView.visibility = View.VISIBLE
+        Toast.makeText(this, "Thanks!", Toast.LENGTH_SHORT).show()
+    }
+
 
     private fun configureViews() {
         profileImage = findViewById(R.id.profile_image)
         profileName = findViewById(R.id.profile_name)
         profileBio = findViewById(R.id.profile_bio)
+        dogImageView = findViewById(R.id.dogImageView)
     }
 
     private fun setupProfile() {
@@ -35,7 +49,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configureImage() {
-        profileImage.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.ic_launcher_foreground))
+        profileImage.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.avatar_14))
+        dogImageView.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.dog))
     }
 
     private fun configureName() {
